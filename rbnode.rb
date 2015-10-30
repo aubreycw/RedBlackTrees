@@ -13,4 +13,16 @@ class RedBlackNode
     return @left.include?(value) if @value > value && @left
     @right && @right.include?(value)
   end
+
+  def add(value)
+    return self if value == @value
+    if value < @value
+      @left = @left.add(value) if @left
+      @left = RedBlackNode.new(value, self, nil, nil, false)
+    else
+      @right = @right.add(value) if @right
+      @right = RedBlackNode.new(value, self, nil, nil, false)
+    end
+    self
+  end
 end

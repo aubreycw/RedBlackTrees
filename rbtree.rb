@@ -4,11 +4,12 @@ class RedBlackTree
   end
 
   def add(value)
-    @rootNode.add(value)
+    @rootNode = @rootNode.add(value)
     rebalance
   end
 
   def remove(value)
+
   end
 
   def rebalance

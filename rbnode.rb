@@ -16,13 +16,20 @@ class RedBlackNode
 
   def add(value)
     return self if value == @value
-    if value < @value
-      @left = @left.add(value) if @left
+    if value < @value && @left
+      @left.add(value)
+    elsif value < @value
       @left = RedBlackNode.new(value, self, nil, nil, false)
+      @left.rebalance
+    elsif @right
+      @right.add(value)
     else
-      @right = @right.add(value) if @right
       @right = RedBlackNode.new(value, self, nil, nil, false)
+      @right.rebalance
     end
     self
+  end
+
+  def rebalance
   end
 end
